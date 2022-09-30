@@ -171,7 +171,6 @@ METADATA=true
 EMAILS=true
 DOMAIN_INFO=true
 IP_INFO=true
-METAFINDER_LIMIT=20 # Max 250
 
 # Subdomains
 SUBDOMAINS_GENERAL=true
@@ -433,7 +432,6 @@ reset='\033[0m'
 - Domain information ([whois](https://github.com/rfc1036/whois) and [amass](https://github.com/OWASP/Amass))
 - Emails addresses and users ([theHarvester](https://github.com/laramies/theHarvester) and [emailfinder](https://github.com/Josue87/EmailFinder))
 - Password leaks ([pwndb](https://github.com/davidtavarez/pwndb) and [H8mail](https://github.com/khast3x/h8mail))
-- Metadata finder ([MetaFinder](https://github.com/Josue87/MetaFinder))
 
 ## Subdomains
   - Passive ([amass](https://github.com/OWASP/Amass) and [github-subdomains](https://github.com/gwen001/github-subdomains))

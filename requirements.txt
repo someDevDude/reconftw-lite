@@ -17,7 +17,6 @@ fastapi                 # theHarvester
 future                  # multiple
 h8mail                  # Tool
 ipwhois                 # fav-up
-metafinder              # Tool
 mmh3                    # fav-up
 netaddr                 # dnsvalidator
 orjson                  # theHarvester
