@@ -80,7 +80,6 @@ gotools["rush"]="go install github.com/shenwei356/rush@latest"
 gotools["enumerepo"]="go install github.com/trickest/enumerepo@latest"
 
 declare -A repos
-repos["dorks_hunter"]="six2dez/dorks_hunter"
 repos["pwndb"]="davidtavarez/pwndb"
 repos["dnsvalidator"]="vortexau/dnsvalidator"
 repos["theHarvester"]="laramies/theHarvester"
