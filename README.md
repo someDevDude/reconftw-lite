@@ -195,8 +195,6 @@ WEBPROBEFULL=true
 WEBSCREENSHOT=true
 VIRTUALHOSTS=true
 UNCOMMON_PORTS_WEB="81,300,591,593,832,981,1010,1311,1099,2082,2095,2096,2480,3000,3128,3333,4243,4567,4711,4712,4993,5000,5104,5108,5280,5281,5601,5800,6543,7000,7001,7396,7474,8000,8001,8008,8014,8042,8060,8069,8080,8081,8083,8088,8090,8091,8095,8118,8123,8172,8181,8222,8243,8280,8281,8333,8337,8443,8500,8834,8880,8888,8983,9000,9001,9043,9060,9080,9090,9091,9092,9200,9443,9502,9800,9981,10000,10250,11371,12443,15672,16080,17778,18091,18092,20720,32000,55440,55672"
-# You can change to aquatone if gowitness fails, comment the one you don't want
-AXIOM_SCREENSHOT_MODULE=webscreenshot # Choose between aquatone,gowitness,webscreenshot
 
 # Host
 FAVICON=true
@@ -269,7 +267,6 @@ PUREDNS_TRUSTED_LIMIT=400
 PUREDNS_WILDCARDTEST_LIMIT=30
 PUREDNS_WILDCARDBATCH_LIMIT=1500000
 WEBSCREENSHOT_THREADS=200
-GOWITNESS_THREADS=8
 RESOLVE_DOMAINS_THREADS=150
 PPFUZZ_THREADS=30
 DNSVALIDATOR_THREADS=200
@@ -431,7 +428,6 @@ reset='\033[0m'
  ## Osint
 - Domain information ([whois](https://github.com/rfc1036/whois) and [amass](https://github.com/OWASP/Amass))
 - Emails addresses and users ([theHarvester](https://github.com/laramies/theHarvester) and [emailfinder](https://github.com/Josue87/EmailFinder))
-- Password leaks ([pwndb](https://github.com/davidtavarez/pwndb) and [H8mail](https://github.com/khast3x/h8mail))
 
 ## Subdomains
   - Passive ([amass](https://github.com/OWASP/Amass) and [github-subdomains](https://github.com/gwen001/github-subdomains))
@@ -459,7 +455,6 @@ reset='\033[0m'
 
 ## Webs
 - Web Prober ([httpx](https://github.com/projectdiscovery/httpx) and [unimap](https://github.com/Edu4rdSHL/unimap))
-- Web screenshot ([webscreenshot](https://github.com/maaaaz/webscreenshot) or [gowitness](https://github.com/sensepost/gowitness))
 - Web templates scanner ([nuclei](https://github.com/projectdiscovery/nuclei) and [nuclei geeknik](https://github.com/geeknik/the-nuclei-templates.git))
 - Url extraction ([waybackurls](https://github.com/tomnomnom/waybackurls), [gau](https://github.com/lc/gau), [gospider](https://github.com/jaeles-project/gospider), [github-endpoints](https://gist.github.com/six2dez/d1d516b606557526e9a78d7dd49cacd3) and [JSA](https://github.com/w9w/JSA))
 - URLPatterns Search and filtering ([urless](https://github.com/xnl-h4ck3r/urless), [gf](https://github.com/tomnomnom/gf) and [gf-patterns](https://github.com/1ndianl33t/Gf-Patterns))

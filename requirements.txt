@@ -22,7 +22,6 @@ netaddr                 # dnsvalidator
 orjson                  # theHarvester
 psutil                  # xnLinkFinder
 pyppeteer               # theHarvester
-PySocks                 # pwndb
 PyYAML                  # theHarvester
 requests                # multiple
 requests_futures        # cloud_enums

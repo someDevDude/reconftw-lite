@@ -65,7 +65,6 @@ function tools_installed(){
 	which gospider &>/dev/null || { printf "${bred} [*] gospider			[NO]${reset}\n"; allinstalled=false;}
 	which wafw00f &>/dev/null || { printf "${bred} [*] wafw00f			[NO]${reset}\n"; allinstalled=false;}
 	which dnsvalidator &>/dev/null || { printf "${bred} [*] dnsvalidator		[NO]${reset}\n"; allinstalled=false;}
-	which gowitness &>/dev/null || { printf "${bred} [*] gowitness			[NO]${reset}\n"; allinstalled=false;}
 	which amass &>/dev/null || { printf "${bred} [*] Amass			[NO]${reset}\n"; allinstalled=false;}
 	which waybackurls &>/dev/null || { printf "${bred} [*] Waybackurls		[NO]${reset}\n"; allinstalled=false;}
 	which gau &>/dev/null || { printf "${bred} [*] gau			[NO]${reset}\n"; allinstalled=false;}
@@ -162,18 +161,6 @@ function emails(){
 		h8mail -t $domain -q domain --loose -c $tools/h8mail_config.ini -j .tmp/h8_results.json 2>>"$LOGFILE" &>/dev/null
 		[ -s ".tmp/h8_results.json" ] && cat .tmp/h8_results.json | jq -r '.targets[0] | .data[] | .[]' | awk '{print $12}' | anew -q osint/h8mail.txt
 
-		PWNDB_STATUS=$(timeout 30s curl -Is --socks5-hostname localhost:9050 http://pwndb2am4tzkvold.onion | grep HTTP | cut -d ' ' -f2)
-
-		if [ "$PWNDB_STATUS" = 200 ]; then
-			cd "$tools/pwndb" || { echo "Failed to cd directory in ${FUNCNAME[0]} @ line ${LINENO}"; exit 1; }
-			python3 pwndb.py --target "@${domain}" | sed '/^[-]/d' | anew -q $dir/osint/passwords.txt
-			cd "$dir" || { echo "Failed to cd directory in ${FUNCNAME[0]} @ line ${LINENO}"; exit 1; }
-			[ -s "osint/passwords.txt" ] && sed -r -i "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" osint/passwords.txt
-			[ -s "osint/passwords.txt" ] && sed -i '1,2d' osint/passwords.txt
-		else
-			text="${yellow}\n pwndb is currently down :(\n\n Check xjypo5vzgmo7jca6b322dnqbsdnp3amd24ybx26x5nxbusccjkm4pwid.onion${reset}\n"
-			printf "${text}" && printf "${text}" | $NOTIFY
-		fi
 		end_func "Results are saved in $domain/osint/[emails/users/h8mail/passwords].txt" ${FUNCNAME[0]}
 	else
 		if [ "$EMAILS" = false ] || [ "$OSINT" = false ]; then
@@ -909,27 +896,6 @@ function webprobe_full(){
 		fi
 	else
 		if [ "$WEBPROBEFULL" = false ]; then
-			printf "\n${yellow} ${FUNCNAME[0]} skipped in this mode or defined in reconftw.cfg ${reset}\n"
-		else
-			printf "${yellow} ${FUNCNAME[0]} is already processed, to force executing ${FUNCNAME[0]} delete\n    $called_fn_dir/.${FUNCNAME[0]} ${reset}\n\n"
-		fi
-	fi
-}
-
-function screenshot(){
-	if { [ ! -f "$called_fn_dir/.${FUNCNAME[0]}" ] || [ "$DIFF" = true ]; } && [ "$WEBSCREENSHOT" = true ]; then
-		start_func ${FUNCNAME[0]} "Web Screenshots"
-		[ ! -s ".tmp/webs_all.txt" ] && cat webs/webs.txt webs/webs_uncommon_ports.txt 2>/dev/null | anew -q .tmp/webs_all.txt
-		if [ ! "$AXIOM" = true ]; then
-			#[ -s ".tmp/webs_screenshots.txt" ] && webscreenshot -i .tmp/webs_screenshots.txt -w $WEBSCREENSHOT_THREADS -o screenshots 2>>"$LOGFILE" &>/dev/null
-			[ -s ".tmp/webs_all.txt" ] && gowitness file -f .tmp/webs_all.txt -t $GOWITNESS_THREADS --disable-logging 2>>"$LOGFILE"
-		else
-			[ "$AXIOM_SCREENSHOT_MODULE" = "webscreenshot" ] && axiom-scan .tmp/webs_all.txt -m $AXIOM_SCREENSHOT_MODULE -w $WEBSCREENSHOT_THREADS -o screenshots $AXIOM_EXTRA_ARGS 2>>"$LOGFILE" &>/dev/null
-			[ "$AXIOM_SCREENSHOT_MODULE" != "webscreenshot" ] && axiom-scan .tmp/webs_all.txt -m $AXIOM_SCREENSHOT_MODULE -o screenshots $AXIOM_EXTRA_ARGS 2>>"$LOGFILE" &>/dev/null
-		fi
-		end_func "Results are saved in $domain/screenshots folder" ${FUNCNAME[0]}
-	else
-		if [ "$WEBSCREENSHOT" = false ]; then
 			printf "\n${yellow} ${FUNCNAME[0]} skipped in this mode or defined in reconftw.cfg ${reset}\n"
 		else
 			printf "${yellow} ${FUNCNAME[0]} is already processed, to force executing ${FUNCNAME[0]} delete\n    $called_fn_dir/.${FUNCNAME[0]} ${reset}\n\n"
@@ -2444,7 +2410,6 @@ function multi_recon(){
 
 	notification "############################# Total data ############################" info
 	NUMOFLINES_users_total=$(find . -type f -name 'users.txt' -exec cat {} + | anew osint/users.txt | sed '/^$/d' | wc -l)
-	NUMOFLINES_pwndb_total=$(find . -type f -name 'passwords.txt' -exec cat {} + | anew osint/passwords.txt | sed '/^$/d' | wc -l)
 	NUMOFLINES_software_total=$(find . -type f -name 'software.txt' -exec cat {} + | anew osint/software.txt | sed '/^$/d' | wc -l)
 	NUMOFLINES_authors_total=$(find . -type f -name 'authors.txt' -exec cat {} + | anew osint/authors.txt | sed '/^$/d' | wc -l)
 	NUMOFLINES_subs_total=$(find . -type f -name 'subdomains.txt' -exec cat {} + | anew subdomains/subdomains.txt | sed '/^$/d' | wc -l)
@@ -2458,7 +2423,6 @@ function multi_recon(){
 	find . -type f -name 'portscan_passive.txt' -exec cat {} + > hosts/portscan_passive.txt 2>>"$LOGFILE" &>/dev/null
 
 	notification "- ${NUMOFLINES_users_total} total users found" good
-	notification "- ${NUMOFLINES_pwndb_total} total creds leaked" good
 	notification "- ${NUMOFLINES_software_total} total software found" good
 	notification "- ${NUMOFLINES_authors_total} total authors found" good
 	notification "- ${NUMOFLINES_subs_total} total subdomains" good

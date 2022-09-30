@@ -71,7 +71,7 @@ gotools["roboxtractor"]="go install -v github.com/Josue87/roboxtractor@latest"
 gotools["mapcidr"]="go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest"
 gotools["ipcdn"]="go install -v github.com/six2dez/ipcdn@latest"
 gotools["dnstake"]="go install -v github.com/pwnesia/dnstake/cmd/dnstake@latest"
-gotools["gowitness"]="go install -v github.com/sensepost/gowitness@latest"
+
 gotools["tlsx"]="go install github.com/projectdiscovery/tlsx/cmd/tlsx@latest"
 gotools["smap"]="go install -v github.com/s0md3v/smap/cmd/smap@latest"
 gotools["dsieve"]="go install -v github.com/trickest/dsieve@master"
@@ -80,7 +80,6 @@ gotools["rush"]="go install github.com/shenwei356/rush@latest"
 gotools["enumerepo"]="go install github.com/trickest/enumerepo@latest"
 
 declare -A repos
-repos["pwndb"]="davidtavarez/pwndb"
 repos["dnsvalidator"]="vortexau/dnsvalidator"
 repos["theHarvester"]="laramies/theHarvester"
 repos["brutespray"]="x90skysn3k/brutespray"
