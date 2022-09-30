@@ -135,7 +135,6 @@ Yes! reconFTW can also be easily deployed with Terraform and Ansible to AWS, if 
 tools=~/Tools
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 profile_shell=".$(basename $(echo $SHELL))rc"
-reconftw_version=$(git rev-parse --abbrev-ref HEAD)-$(git describe --tags)
 generate_resolvers=false
 proxy_url="http://127.0.0.1:8080/"
 #dir_output=/custom/output/path

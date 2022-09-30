@@ -12,7 +12,7 @@ function banner(){
 	printf "   ░░   ░    ░   ░        ░ ░ ░ ▒     ░   ░ ░  ░ ░      ░        ░   ░  \n"
 	printf "    ░        ░  ░░ ░          ░ ░           ░                      ░    \n"
 	printf "                 ░                                                      \n"
-	printf " ${reconftw_version}                                 by @six2dez${reset}\n"
+	printf "								                                 by @six2dez\n"
 }
 
 ###############################################################################################################
