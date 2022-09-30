@@ -2142,8 +2142,6 @@ function passive(){
 	domain_info
 	ip_info
 	emails
-	google_dorks
-	github_dorks
 	github_repos
 	metadata
 	SUBSCRAPING=false
@@ -2179,8 +2177,6 @@ function osint(){
 	domain_info
 	ip_info
 	emails
-	google_dorks
-	github_dorks
 	github_repos
 	metadata
 	zonetransfer
@@ -2250,8 +2246,6 @@ function multi_osint(){
 		domain_info
 		ip_info
 		emails
-		google_dorks
-		github_dorks
 		github_repos
 		metadata
 		zonetransfer
@@ -2268,8 +2262,6 @@ function recon(){
 	domain_info
 	ip_info
 	emails
-	google_dorks
-	github_dorks
 	github_repos
 	metadata
 	zonetransfer
@@ -2285,7 +2277,6 @@ function recon(){
 	subtakeover
 	remove_big_files
 	s3buckets
-	screenshot
 #	virtualhosts
 	cdnprovider
 	portscan
@@ -2358,8 +2349,6 @@ function multi_recon(){
 		domain_info
 		ip_info
 		emails
-		google_dorks
-		github_dorks
 		github_repos
 		metadata
 		zonetransfer
@@ -2391,7 +2380,7 @@ function multi_recon(){
 		webprobe_full
 		subtakeover
 		remove_big_files
-		screenshot
+
 #		virtualhosts
 		cdnprovider
 		portscan
@@ -2498,7 +2487,6 @@ function subs_menu(){
 	webprobe_full
 	subtakeover
 	remove_big_files
-	screenshot
 #	virtualhosts
 	zonetransfer
 	s3buckets
@@ -2513,7 +2501,6 @@ function subs_menu(){
 function webs_menu(){
 	subtakeover
 	remove_big_files
-	screenshot
 #	virtualhosts
 	waf_checks
 	nuclei_check
